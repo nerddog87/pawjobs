@@ -485,13 +485,11 @@
       object-fit: contain;
     }
 
-    .custom-status-text {
+    .last-seen {
       font-size: 0.58rem;
       font-weight: 300;
-      color: #777;
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
+      color: #a09095;
+      margin-top: 0.2rem;
     }
 
     .presence-avatar-wrap {
@@ -779,6 +777,7 @@
             <img class="custom-status-emoji" id="customStatusEmoji" src="" alt="" style="display:none" />
             <span class="custom-status-text" id="customStatusText"></span>
           </div>
+          <div class="last-seen" id="lastSeen" style="display:none"></div>
         </div>
       </div>
       <div class="presence-activity" id="presenceActivity" style="display:none">
@@ -1004,7 +1003,10 @@
     const presenceDtl      = document.getElementById('presenceDetail');
     const presenceStt      = document.getElementById('presenceState');
     const presenceElapsed  = document.getElementById('presenceElapsed');
+    const lastSeenEl       = document.getElementById('lastSeen');
     let elapsedInterval = null;
+    let lastSeenInterval = null;
+    let previousStatus = null;
 
     function applyPresence(data) {
       presenceCard.style.display = '';
@@ -1047,6 +1049,38 @@
 
       const s = data.discord_status || 'offline';
       presenceDot.className = 'presence-status-dot ' + s;
+
+      // Track last seen when going offline
+      if (s === 'offline' && previousStatus && previousStatus !== 'offline') {
+        localStorage.setItem('lastSeen', Date.now().toString());
+      }
+      previousStatus = s;
+
+      // Show last seen when offline
+      if (s === 'offline') {
+        const lastSeen = localStorage.getItem('lastSeen');
+        if (lastSeen) {
+          lastSeenEl.style.display = 'block';
+          function updateLastSeen() {
+            const secs = Math.floor((Date.now() - parseInt(lastSeen)) / 1000);
+            const m = Math.floor(secs / 60);
+            const h = Math.floor(secs / 3600);
+            const d = Math.floor(secs / 86400);
+            let text;
+            if (d > 0) text = `last seen ${d}d ago`;
+            else if (h > 0) text = `last seen ${h}h ago`;
+            else if (m > 0) text = `last seen ${m}m ago`;
+            else text = `last seen just now`;
+            lastSeenEl.textContent = text;
+          }
+          updateLastSeen();
+          if (lastSeenInterval) clearInterval(lastSeenInterval);
+          lastSeenInterval = setInterval(updateLastSeen, 60000);
+        }
+      } else {
+        lastSeenEl.style.display = 'none';
+        if (lastSeenInterval) { clearInterval(lastSeenInterval); lastSeenInterval = null; }
+      }
 
       const activity = (data.activities || []).find(a => a.type !== 2 && a.type !== 4);
       if (activity) {
