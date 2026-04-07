@@ -1,0 +1,1343 @@
+<!-- halo i paster all of this heh -->
+<!-- r is a qt -->
+<!-- puppy tgirl factory -->
+<!-- synthus stop spying on me nigga -->
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>edenware</title>
+  <meta property="og:title" content="edenware" />
+  <meta property="og:description" content="pawjobs.me/edenware" />
+  <meta property="og:image" content="https://pawjobs.me/edenware/avatar.jpg" />
+  <meta property="og:url" content="https://pawjobs.me/edenware/" />
+  <meta property="og:type" content="website" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@300;400;600&display=swap" rel="stylesheet">
+  <script>
+    const _base = 'edenware';
+    const _glitchChars = '!<>-_\\/[]{}—=+*^?#@$%&~';
+    let _glitchTimer = null;
+
+    function glitchText(target, duration, callback) {
+      let start = null;
+      const len = target.length;
+      function step(ts) {
+        if (!start) start = ts;
+        const progress = Math.min((ts - start) / duration, 1);
+        const revealedCount = Math.floor(progress * len);
+        let result = '';
+        for (let i = 0; i < len; i++) {
+          if (i < revealedCount) {
+            result += target[i];
+          } else {
+            result += _glitchChars[Math.floor(Math.random() * _glitchChars.length)];
+          }
+        }
+        document.title = result;
+        if (progress < 1) {
+          requestAnimationFrame(step);
+        } else {
+          document.title = target;
+          if (callback) callback();
+        }
+      }
+      requestAnimationFrame(step);
+    }
+
+    function startGlitchCycle() {
+      // glitch to scrambled then back edenware repeatedly
+      glitchText(_base, 600, () => {
+        setTimeout(() => {
+          glitchText(_base, 600, () => {
+            setTimeout(startGlitchCycle, 4000);
+          });
+        }, 1200);
+      });
+    }
+
+    window.addEventListener('load', () => {
+      setTimeout(startGlitchCycle, 1000);
+    });
+  </script>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html, body {
+      height: 100%;
+      font-family: 'Unbounded', sans-serif;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 2rem 5vw;
+      overflow: hidden;
+    }
+
+    .bg-video {
+      position: fixed; inset: 0;
+      width: 100%; height: 100%;
+      background: 
+        repeating-linear-gradient(
+          90deg,
+          transparent,
+          transparent 40px,
+          rgba(250, 126, 209, 0.08) 40px,
+          rgba(250, 126, 209, 0.08) 41px
+        ),
+        repeating-linear-gradient(
+          0deg,
+          transparent,
+          transparent 40px,
+          rgba(211, 86, 162, 0.06) 40px,
+          rgba(211, 86, 162, 0.06) 41px
+        ),
+        #050505;
+      z-index: -1;
+    }
+    .vignette.flicker {
+      animation: streetLightFlicker 1.2s ease-out;
+    }
+
+    @keyframes streetLightFlicker {
+      0% { opacity: 1; }
+      5% { opacity: 0.3; }
+      10% { opacity: 1; }
+      15% { opacity: 0.2; }
+      20% { opacity: 0.8; }
+      25% { opacity: 0.1; }
+      30% { opacity: 1; }
+      35% { opacity: 0.4; }
+      40% { opacity: 0.9; }
+      45% { opacity: 0.2; }
+      50% { opacity: 1; }
+      55% { opacity: 0.5; }
+      60% { opacity: 0.8; }
+      70% { opacity: 0.3; }
+      80% { opacity: 1; }
+      90% { opacity: 0.6; }
+      100% { opacity: 1; }
+    }
+
+    .bg-overlay {
+      position: fixed; inset: 0;
+      background: none;
+      backdrop-filter: none;
+      -webkit-backdrop-filter: none;
+      z-index: 0;
+    }
+
+    .enter-screen {
+      position: fixed;
+      inset: 0;
+      z-index: 100;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      background: rgba(0,0,0,0.72);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      cursor: pointer;
+      transition: opacity 0.6s ease;
+    }
+
+    .enter-screen.hidden {
+      opacity: 0;
+      pointer-events: none;
+    }
+
+
+
+    .enter-label {
+      font-family: 'Unbounded', sans-serif !important;
+      font-size: 0.65rem;
+      font-weight: 500;
+      color: rgba(255,255,255,0.6);
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+    }
+
+    .layout {
+      position: relative;
+      z-index: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
+      width: min(525px, 90vw);
+      opacity: 0;
+      transform: translateY(-60px);
+      transition: opacity 0.8s ease, transform 0.8s cubic-bezier(0.34, 1.56, 0.64, 1);
+      pointer-events: none;
+    }
+
+    .layout.visible {
+      opacity: 1;
+      transform: translateY(0);
+      pointer-events: auto;
+    }
+
+    .card {
+      width: 100%;
+      background: rgba(15,15,15,0.85);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1px solid;
+      border-image: linear-gradient(135deg, #fa7ed1, #d356a2) 1;
+      border-radius: 8px;
+      padding: 1.6rem 2.2rem 1rem;
+    }
+
+    .top-row {
+      display: flex;
+      align-items: center;
+      gap: 1.4rem;
+      margin-bottom: 1.3rem;
+    }
+
+    .avatar {
+      width: 100px; height: 100px;
+      object-fit: cover;
+      flex-shrink: 0;
+      border-radius: 3px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .avatar-wrap {
+      position: relative;
+      width: 100px;
+      height: 100px;
+      flex-shrink: 0;
+    }
+
+    .avatar-wrap::before {
+      content: '';
+      position: absolute;
+      inset: -3px;
+      border-radius: 5px;
+      background: linear-gradient(90deg, #fa7ed1, #d356a2, #fa7ed1, #d356a2);
+      background-size: 300% 100%;
+      animation: gradientRotate 3s linear infinite;
+      z-index: 0;
+    }
+
+    .avatar-wrap::after {
+      content: '';
+      position: absolute;
+      inset: -3px;
+      border-radius: 5px;
+      background: linear-gradient(90deg, #fa7ed1, #d356a2, #fa7ed1, #d356a2);
+      background-size: 300% 100%;
+      animation: gradientRotate 3s linear infinite;
+      z-index: -1;
+      filter: blur(8px);
+      opacity: 0.6;
+      animation: gradientRotate 3s linear infinite, pulseGlow 2s ease-in-out infinite alternate;
+    }
+
+    @keyframes gradientRotate {
+      0% { background-position: 0% 50%; }
+      100% { background-position: 300% 50%; }
+    }
+
+    @keyframes pulseGlow {
+      0% { opacity: 0.4; filter: blur(8px); }
+      100% { opacity: 0.8; filter: blur(12px); }
+    }
+
+    .info { display: flex; flex-direction: column; gap: 0.25rem; }
+
+    .name-wrap {
+      position: relative;
+      display: inline-block;
+      overflow: hidden;
+      padding: 4px 6px;
+      margin: -4px -6px;
+    }
+
+    .sparkle-canvas {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .name {
+      position: relative;
+      z-index: 1;
+      font-weight: 600;
+      font-size: 1.6rem;
+      line-height: 1.1;
+      letter-spacing: -0.01em;
+      background: linear-gradient(90deg, #fa7ed1 0%, #d356a2 50%, #fa7ed1 100%);
+      background-size: 200% 100%;
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+      animation: gradientShift 4s ease-in-out infinite;
+    }
+
+    @keyframes gradientShift {
+      0% {
+        background-position: 0% 0%;
+      }
+      50% {
+        background-position: 100% 0%;
+      }
+      100% {
+        background-position: 0% 0%;
+      }
+    }
+
+    .handle {
+      font-weight: 300;
+      font-size: 0.65rem;
+      color: #4a4a4a;
+      letter-spacing: 0.06em;
+    }
+
+    .divider {
+      border: none;
+      border-top: 1px solid rgba(255,255,255,0.06);
+      margin-bottom: 1.2rem;
+    }
+
+    .socials { display: flex; gap: 1.2rem; align-items: center; }
+
+    .social-link {
+      color: #fa7ed1;
+      text-decoration: none;
+      display: flex;
+      transition: color 0.15s;
+      position: relative;
+    }
+    .social-link:hover { color: #d356a2; }
+    .social-link svg { width: 24px; height: 24px; fill: currentColor; }
+
+    .social-link::after {
+      content: attr(title);
+      position: absolute;
+      bottom: calc(100% + 8px);
+      left: 50%;
+      transform: translateX(-50%) translateY(4px);
+      background: rgba(20,20,20,0.95);
+      border: 1px solid rgba(255,255,255,0.1);
+      color: #ccc;
+      font-size: 0.5rem;
+      letter-spacing: 0.08em;
+      padding: 0.3rem 0.55rem;
+      border-radius: 4px;
+      white-space: nowrap;
+      pointer-events: none;
+      opacity: 0;
+      transition: opacity 0.15s, transform 0.15s;
+    }
+
+    .social-link:hover::after {
+      opacity: 1;
+      transform: translateX(-50%) translateY(0);
+    }
+
+    .player-card {
+      width: 100%;
+      background: rgba(15,15,15,0.85);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1px solid;
+      border-image: linear-gradient(135deg, #fa7ed1, #d356a2) 1;
+      border-radius: 8px;
+      padding: 1rem 1.6rem 1.1rem;
+      animation: fadeIn 0.5s 0.1s ease both;
+    }
+
+    .player-title-row {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      margin-bottom: 0.7rem;
+    }
+
+    .player-song {
+      font-size: 0.72rem;
+      font-weight: 500;
+      color: #e0e0e0;
+      letter-spacing: 0.01em;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .spotify-link {
+      display: inline-flex;
+      align-items: center;
+      color: #aaa;
+      text-decoration: none;
+      opacity: 0.65;
+      transition: opacity 0.15s;
+      flex-shrink: 0;
+    }
+    .spotify-link:hover { opacity: 1; }
+    .spotify-link svg { width: 16px; height: 16px; }
+
+    .player-controls-row {
+      display: flex;
+      align-items: center;
+      gap: 0.65rem;
+    }
+
+    .ctrl-btn {
+      background: none; border: none; cursor: pointer;
+      color: #fff; padding: 0;
+      display: flex; align-items: center; justify-content: center;
+      transition: opacity 0.12s, transform 0.1s; line-height: 1;
+      flex-shrink: 0;
+      opacity: 0.8;
+    }
+    .ctrl-btn:hover { opacity: 1; }
+    .ctrl-btn:active { transform: scale(0.9); }
+    .ctrl-btn svg { fill: currentColor; }
+    .ctrl-btn.play svg { width: 20px; height: 20px; }
+    .ctrl-btn.mute svg { width: 15px; height: 15px; }
+
+    .vol-dot {
+      width: 8px; height: 8px;
+      border-radius: 50%;
+      background: #fff;
+      flex-shrink: 0;
+      opacity: 0.7;
+    }
+
+    .time-label {
+      font-size: 0.62rem; font-weight: 300;
+      color: #555; letter-spacing: 0.05em; min-width: 2.8rem;
+    }
+    .time-label.right { text-align: right; }
+
+    .scrubber {
+      flex: 1; height: 4px;
+      background: rgba(255,255,255,0.12);
+      border-radius: 99px; position: relative;
+      cursor: pointer; transition: height 0.15s;
+    }
+    .scrubber:hover { height: 6px; }
+
+    .scrubber-fill {
+      position: absolute; left: 0; top: 0; bottom: 0;
+      background: #fff; border-radius: 99px; width: 0%;
+      pointer-events: none;
+    }
+
+    .scrubber-thumb {
+      position: absolute; top: 50%;
+      transform: translate(-50%, -50%);
+      width: 11px; height: 11px; border-radius: 50%;
+      background: #fff; left: 0%; pointer-events: none;
+      opacity: 0; transition: opacity 0.15s;
+    }
+    .scrubber:hover .scrubber-thumb { opacity: 1; }
+
+    .vol-slider {
+      width: 72px;
+      height: 4px;
+      background: rgba(255,255,255,0.12);
+      border-radius: 99px;
+      cursor: pointer;
+      position: relative;
+      flex-shrink: 0;
+      transition: height 0.15s;
+    }
+    .vol-slider:hover { height: 6px; }
+    .vol-fill {
+      height: 100%;
+      background: #fff;
+      border-radius: 99px;
+      width: 25%;
+      pointer-events: none;
+    }
+    .vol-thumb {
+      position: absolute;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      width: 11px; height: 11px;
+      border-radius: 50%;
+      background: #fff;
+      pointer-events: none;
+      opacity: 0;
+      transition: opacity 0.15s;
+      left: 25%;
+    }
+    .vol-slider:hover .vol-thumb { opacity: 1; }
+
+    /* ── PRESENCE CARD ── */
+    .presence-card {
+      width: 100%;
+      background: rgba(15,15,15,0.85);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1px solid;
+      border-image: linear-gradient(135deg, #fa7ed1, #d356a2) 1;
+      border-radius: 8px;
+      padding: 1.1rem 1.8rem;
+      animation: fadeIn 0.5s 0.15s ease both;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 0.75rem;
+    }
+
+    .presence-row {
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+      gap: 1rem;
+      width: 100%;
+    }
+
+    .custom-status {
+      display: flex;
+      align-items: center;
+      gap: 0.35rem;
+      margin-top: 0.2rem;
+    }
+
+    .custom-status-emoji {
+      width: 16px;
+      height: 16px;
+      object-fit: contain;
+    }
+
+    .custom-status-text {
+      font-size: 0.58rem;
+      font-weight: 300;
+      color: #777;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .presence-avatar-wrap {
+      position: relative;
+      flex-shrink: 0;
+      width: 62px;
+      height: 62px;
+    }
+
+    .presence-avatar {
+      width: 62px; height: 62px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 1px solid rgba(255,255,255,0.1);
+      display: block;
+    }
+
+
+
+    .presence-status-dot {
+      position: absolute;
+      bottom: 1px; right: 1px;
+      width: 14px; height: 14px;
+      border-radius: 50%;
+      border: 2px solid #0a0a0a;
+      background: #555;
+      z-index: 3;
+    }
+    .presence-status-dot.online  { background: #23a55a; }
+    .presence-status-dot.idle    { background: #f0b232; }
+    .presence-status-dot.dnd     { background: #f23f43; }
+    .presence-status-dot.offline { background: #555; }
+
+    .presence-info {
+      display: flex;
+      flex-direction: column;
+      gap: 0.2rem;
+    }
+
+    .presence-name {
+      font-size: 0.9rem;
+      font-weight: 500;
+      color: #e0e0e0;
+    }
+
+    .presence-name-row {
+      display: flex;
+      align-items: center;
+      gap: 0.45rem;
+    }
+
+
+
+    .presence-activity {
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+      gap: 0.75rem;
+      padding-top: 0.6rem;
+      border-top: 1px solid rgba(255,255,255,0.06);
+      width: 100%;
+    }
+
+    .presence-art {
+      width: 38px; height: 38px;
+      border-radius: 4px;
+      object-fit: cover;
+      flex-shrink: 0;
+      border: 1px solid rgba(255,255,255,0.08);
+    }
+
+    .presence-act-info {
+      display: flex;
+      flex-direction: column;
+      gap: 0.12rem;
+      min-width: 0;
+    }
+
+    .presence-act-name {
+      font-size: 0.6rem;
+      font-weight: 500;
+      color: #e0e0e0;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .playing-label {
+      color: #444;
+      font-weight: 300;
+    }
+
+    .presence-act-detail, .presence-act-state {
+      font-size: 0.5rem;
+      font-weight: 300;
+      color: #555;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .presence-elapsed {
+      font-size: 0.48rem;
+      font-weight: 300;
+      color: #444;
+      letter-spacing: 0.04em;
+    }
+
+    .last-seen {
+      font-size: 0.58rem;
+      font-weight: 300;
+      color: #777;
+      margin-top: 0.2rem;
+    }
+
+    * { cursor: none !important; }
+
+    .cursor-dot {
+      position: fixed;
+      pointer-events: none;
+      z-index: 9999;
+      transform: translate(-50%, -50%);
+      transition: transform 0.1s ease;
+    }
+
+    .cursor-dot svg {
+      width: 22px;
+      height: 22px;
+      filter: drop-shadow(0 0 8px rgba(250, 126, 209, 0.8));
+      transition: transform 0.15s ease;
+    }
+
+    .cursor-dot.clicking svg {
+      transform: scale(0.7) rotate(45deg);
+    }
+
+    .cursor-trail {
+      position: fixed;
+      pointer-events: none;
+      z-index: 9997;
+      border-radius: 50%;
+      background: rgba(250, 126, 209, 0.6);
+      transform: translate(-50%, -50%);
+      transition: width 0.2s, height 0.2s, opacity 0.2s;
+      width: 6px;
+      height: 6px;
+      opacity: 0;
+    }
+
+    .clock {
+      position: fixed;
+      top: 1rem;
+      right: 1rem;
+      z-index: 10;
+      font-size: 0.65rem;
+      font-weight: 400;
+      color: rgba(255,255,255,0.45);
+      letter-spacing: 0.08em;
+      pointer-events: auto;
+      user-select: none;
+    }
+
+    .clock a {
+      color: rgba(255,255,255,0.45);
+      text-decoration: none;
+      transition: color 0.15s ease;
+    }
+
+    .clock a:hover {
+      color: rgba(255,255,255,0.75);
+    }
+
+    .watermark {
+      position: fixed;
+      top: 2.5rem;
+      right: 1rem;
+      z-index: 2;
+      font-size: 0.65rem;
+      font-weight: 400;
+      color: rgba(255,255,255,0.45);
+      letter-spacing: 0.08em;
+      pointer-events: none;
+      user-select: none;
+    }
+
+    .cat-btn {
+      position: fixed;
+      bottom: 1rem;
+      right: 1rem;
+      z-index: 10;
+      background: rgba(15,15,15,0.85);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1px solid;
+      border-image: linear-gradient(135deg, #fa7ed1, #d356a2) 1;
+      border-radius: 8px;
+      padding: 0.8rem 1.2rem;
+      font-family: 'Unbounded', sans-serif;
+      font-size: 0.8rem;
+      font-weight: 500;
+      color: rgba(255,255,255,0.7);
+      text-decoration: none;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.15s ease;
+    }
+
+    .cat-btn:hover {
+      color: #fff;
+      border-color: rgba(255,255,255,0.15);
+      transform: scale(1.05);
+    }
+
+    .cat-btn:active {
+      transform: scale(0.95);
+    }
+
+    /* ── COLOR VIGNETTE BACKGROUND ── */
+    .color-vignette {
+      position: fixed;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      background: radial-gradient(ellipse at center, rgba(250, 126, 209, 0.08) 0%, rgba(211, 86, 162, 0.05) 50%, transparent 100%);
+      z-index: 0.5;
+      pointer-events: none;
+    }
+
+    /* ── PARTICLES ── */
+    .particles-container {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 0;
+      overflow: hidden;
+    }
+
+    .particle {
+      position: absolute;
+      width: 3px;
+      height: 3px;
+      background: rgba(250, 126, 209, 0.3);
+      border-radius: 50%;
+      animation: particleFloat 20s infinite ease-in-out;
+    }
+
+    @keyframes particleFloat {
+      0% { 
+        transform: translateY(110vh) translateX(0) rotate(0deg); 
+        opacity: 0;
+      }
+      5% { opacity: 0.4; }
+      85% { opacity: 0.4; }
+      100% { 
+        transform: translateY(-50vh) translateX(30px) rotate(360deg); 
+        opacity: 0;
+      }
+    }
+
+    /* ── VIGNETTE OVERLAY ── */
+    .vignette {
+      position: fixed;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      background: radial-gradient(ellipse at center, transparent 0%, rgba(0, 0, 0, 0.6) 100%);
+      z-index: 0.5;
+      pointer-events: none;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="cursor-dot" id="cursorDot">
+    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <linearGradient id="cursorGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+          <stop offset="0%" style="stop-color:#fa7ed1;stop-opacity:1" />
+          <stop offset="100%" style="stop-color:#d356a2;stop-opacity:1" />
+        </linearGradient>
+      </defs>
+      <path d="M12 2 L13.5 10.5 L22 12 L13.5 13.5 L12 22 L10.5 13.5 L2 12 L10.5 10.5 Z" fill="url(#cursorGradient)"/>
+    </svg>
+  </div>
+
+  <div class="bg-video"></div>
+  <div class="bg-overlay"></div>
+  <div class="color-vignette"></div>
+  <div class="vignette"></div>
+  <div class="particles-container" id="particles"></div>
+
+  <div class="clock" id="clock"></div>
+
+  <audio id="audio" src="song.mp3" preload="auto" loop></audio>
+
+  <div class="enter-screen" id="enterScreen">
+    <div class="enter-label">click to enter</div>
+  </div>
+
+  <div class="layout">
+
+    <div class="card">
+      <div class="top-row">
+        <div class="avatar-wrap">
+          <img class="avatar" src="avatar.jpg" alt="edenware" />
+        </div>
+        <div class="info">
+          <div class="name-wrap">
+            <div class="name" id="nameEl">edenware</div>
+            <canvas class="sparkle-canvas" id="sparkleCanvas"></canvas>
+          </div>
+          <div class="handle">@edenware</div>
+        </div>
+      </div>
+
+       <hr class="divider" />
+
+      <div class="socials">
+        <a class="social-link" href="https://discord.gg/wDWDTazpfg" target="_blank" rel="noopener" title="Discord Server">
+          <svg viewBox="0 0 24 24"><path d="M20.317 4.37a19.791 19.791 0 00-4.885-1.515.074.074 0 00-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 00-5.487 0 12.64 12.64 0 00-.617-1.25.077.077 0 00-.079-.037A19.736 19.736 0 003.677 4.37a.07.07 0 00-.032.027C.533 9.046-.32 13.58.099 18.057a.082.082 0 00.031.057 19.9 19.9 0 005.993 3.03.078.078 0 00.084-.028c.462-.63.874-1.295 1.226-1.994a.076.076 0 00-.041-.106 13.107 13.107 0 01-1.872-.892.077.077 0 01-.008-.128 10.2 10.2 0 00.372-.292.074.074 0 01.077-.01c3.928 1.793 8.18 1.793 12.062 0a.074.074 0 01.078.01c.12.098.246.198.373.292a.077.077 0 01-.006.127 12.299 12.299 0 01-1.873.892.077.077 0 00-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 00.084.028 19.839 19.839 0 006.002-3.03.077.077 0 00.032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 00-.031-.03zM8.02 15.33c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.956-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.956 2.418-2.157 2.418zm7.975 0c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.955-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.946 2.418-2.157 2.418z"/></svg>
+        </a>
+      </div>
+    </div>
+
+    <!-- discord presence card -->
+    <div class="presence-card" id="presenceCard" style="display:none">
+      <div class="presence-row">
+        <div class="presence-avatar-wrap">
+          <img class="presence-avatar" id="presenceAvatar" src="" alt="discord avatar" />
+          <div class="presence-status-dot" id="presenceDot"></div>
+        </div>
+        <div class="presence-info">
+          <div class="presence-name-row">
+            <div class="presence-name" id="presenceName"></div>
+
+          </div>
+          <div class="custom-status" id="customStatus" style="display:none">
+            <img class="custom-status-emoji" id="customStatusEmoji" src="" alt="" style="display:none" />
+            <span class="custom-status-text" id="customStatusText"></span>
+          </div>
+          <div class="last-seen" id="lastSeen" style="display:none"></div>
+        </div>
+      </div>
+      <div class="presence-activity" id="presenceActivity" style="display:none">
+        <img class="presence-art" id="presenceArt" src="" alt="" />
+        <div class="presence-act-info">
+          <div class="presence-act-name"><span class="playing-label">playing: </span><span id="presenceActName"></span></div>
+          <div class="presence-act-detail" id="presenceDetail"></div>
+          <div class="presence-act-state" id="presenceState"></div>
+          <div class="presence-elapsed" id="presenceElapsed" style="display:none"></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="player-card">
+      <!-- song title row -->
+      <div class="player-title-row">
+        <span class="player-song">Conga - Gloria Estefan, Miami Sound Machine</span>
+        <a class="spotify-link" href="https://open.spotify.com/track/6OlwUtrUglXv8nyBsy8PFq?si=da30ecf5b8e843f9" target="_blank" rel="noopener" title="Open in Spotify">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M19 19H5V5h7V3H5a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2v-7h-2v7zM14 3v2h3.59l-9.83 9.83 1.41 1.41L19 6.41V10h2V3h-7z"/></svg>
+        </a>
+      </div>
+      <!-- controls row: time / scrubber / play / mute / volume -->
+      <div class="player-controls-row">
+        <span class="time-label" id="currentTime">00:00</span>
+        <div class="scrubber" id="scrubber">
+          <div class="scrubber-fill" id="scrubberFill"></div>
+          <div class="scrubber-thumb" id="scrubberThumb"></div>
+        </div>
+        <span class="time-label right" id="duration">00:00</span>
+        <button class="ctrl-btn play" id="playBtn" title="Play / Pause">
+          <svg id="iconPlay" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+          <svg id="iconPause" viewBox="0 0 24 24" style="display:none"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>
+        </button>
+        <button class="ctrl-btn mute" id="muteBtn" title="Mute">
+          <svg id="iconVol" viewBox="0 0 24 24" fill="currentColor"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg>
+          <svg id="iconMute" viewBox="0 0 24 24" fill="currentColor" style="display:none"><path d="M16.5 12c0-1.77-1.02-3.29-2.5-4.03v2.21l2.45 2.45c.03-.2.05-.41.05-.63zm2.5 0c0 .94-.2 1.82-.54 2.64l1.51 1.51C20.63 14.91 21 13.5 21 12c0-4.28-2.99-7.86-7-8.77v2.06c2.89.86 5 3.54 5 6.71zM4.27 3L3 4.27 7.73 9H3v6h4l5 5v-6.73l4.25 4.25c-.67.52-1.42.93-2.25 1.18v2.06c1.38-.31 2.63-.95 3.69-1.81L19.73 21 21 19.73l-9-9L4.27 3zM12 4L9.91 6.09 12 8.18V4z"/></svg>
+        </button>
+        <div class="vol-slider" id="volSlider">
+          <div class="vol-fill" id="volFill"></div>
+          <div class="vol-thumb" id="volThumb"></div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <script>
+    const audio         = document.getElementById('audio');
+    const enterScreen   = document.getElementById('enterScreen');
+    const playBtn       = document.getElementById('playBtn');
+    const iconPlay      = document.getElementById('iconPlay');
+    const iconPause     = document.getElementById('iconPause');
+    const muteBtn       = document.getElementById('muteBtn');
+    const iconVol       = document.getElementById('iconVol');
+    const iconMute      = document.getElementById('iconMute');
+    const currentTimeEl = document.getElementById('currentTime');
+    const durationEl    = document.getElementById('duration');
+    const scrubber      = document.getElementById('scrubber');
+    const scrubberFill  = document.getElementById('scrubberFill');
+    const scrubberThumb = document.getElementById('scrubberThumb');
+    const volSlider     = document.getElementById('volSlider');
+    const volFill       = document.getElementById('volFill');
+    const volThumb      = document.getElementById('volThumb');
+
+    let isScrubbing = false;
+
+    function fmt(s) {
+      if (isNaN(s)) return '00:00';
+      const m = Math.floor(s / 60);
+      const sec = Math.floor(s % 60);
+      return String(m).padStart(2,'0') + ':' + String(sec).padStart(2,'0');
+    }
+
+    function setPlaying(playing) {
+      iconPlay.style.display  = playing ? 'none' : '';
+      iconPause.style.display = playing ? ''     : 'none';
+    }
+
+    function setMuted(muted) {
+      audio.muted = muted;
+      iconVol.style.display  = muted ? 'none' : '';
+      iconMute.style.display = muted ? '' : 'none';
+    }
+
+    function setVolume(pct) {
+      pct = Math.max(0, Math.min(1, pct));
+      audio.volume = pct;
+      volFill.style.width = (pct * 100) + '%';
+      volThumb.style.left = (pct * 100) + '%';
+      setMuted(pct === 0);
+    }
+
+    function scrubTo(clientX) {
+      const rect = scrubber.getBoundingClientRect();
+      const pct  = Math.max(0, Math.min(1, (clientX - rect.left) / rect.width));
+      if (audio.duration) audio.currentTime = pct * audio.duration;
+    }
+
+    setVolume(0.05);
+
+    enterScreen.addEventListener('click', () => {
+      enterScreen.classList.add('hidden');
+      document.querySelector('.layout').classList.add('visible');
+      document.querySelector('.vignette').classList.add('flicker');
+      audio.play().then(() => setPlaying(true)).catch(() => setPlaying(false));
+    });
+
+    audio.addEventListener('loadedmetadata', () => {
+      durationEl.textContent = fmt(audio.duration);
+    });
+
+    audio.addEventListener('timeupdate', () => {
+      if (isScrubbing) return;
+      const pct = audio.duration ? (audio.currentTime / audio.duration) * 100 : 0;
+      scrubberFill.style.width = pct + '%';
+      scrubberThumb.style.left = pct + '%';
+      currentTimeEl.textContent = fmt(audio.currentTime);
+    });
+
+    audio.addEventListener('play',  () => setPlaying(true));
+    audio.addEventListener('pause', () => setPlaying(false));
+
+    playBtn.addEventListener('click', () => {
+      audio.paused ? audio.play() : audio.pause();
+    });
+
+    muteBtn.addEventListener('click', () => setMuted(!audio.muted));
+
+    scrubber.addEventListener('mousedown', (e) => { isScrubbing = true; scrubTo(e.clientX); });
+    document.addEventListener('mousemove', (e) => { if (isScrubbing) scrubTo(e.clientX); });
+    document.addEventListener('mouseup',   (e) => { if (isScrubbing) { isScrubbing = false; scrubTo(e.clientX); } });
+
+    scrubber.addEventListener('touchstart', (e) => { isScrubbing = true; scrubTo(e.touches[0].clientX); }, { passive: true });
+    document.addEventListener('touchmove',  (e) => { if (isScrubbing) scrubTo(e.touches[0].clientX); }, { passive: true });
+    document.addEventListener('touchend',   ()  => { isScrubbing = false; });
+
+    let isDraggingVol = false;
+    volSlider.addEventListener('mousedown', (e) => {
+      isDraggingVol = true;
+      const rect = volSlider.getBoundingClientRect();
+      setVolume((e.clientX - rect.left) / rect.width);
+    });
+    document.addEventListener('mousemove', (e) => {
+      if (!isDraggingVol) return;
+      const rect = volSlider.getBoundingClientRect();
+      setVolume((e.clientX - rect.left) / rect.width);
+    });
+    document.addEventListener('mouseup', () => { isDraggingVol = false; });
+
+    // ── CUSTOM CURSOR ──
+    const cursorDot = document.getElementById('cursorDot');
+    let mouseX = 0, mouseY = 0;
+    let angle = 0;
+
+    document.addEventListener('mousemove', (e) => {
+      mouseX = e.clientX;
+      mouseY = e.clientY;
+      cursorDot.style.left = mouseX + 'px';
+      cursorDot.style.top  = mouseY + 'px';
+
+      // spawn a tiny sparkle trail dot
+      const trail = document.createElement('div');
+      trail.className = 'cursor-trail';
+      trail.style.left = mouseX + 'px';
+      trail.style.top  = mouseY + 'px';
+      document.body.appendChild(trail);
+      requestAnimationFrame(() => {
+        trail.style.opacity = '0.6';
+        trail.style.width   = '5px';
+        trail.style.height  = '5px';
+      });
+      setTimeout(() => {
+        trail.style.opacity = '0';
+        setTimeout(() => trail.remove(), 200);
+      }, 80);
+    });
+
+    // slow rotate the star
+    function rotateCursor() {
+      angle += 0.5;
+      cursorDot.querySelector('svg').style.transform = `rotate(${angle}deg)`;
+      requestAnimationFrame(rotateCursor);
+    }
+    requestAnimationFrame(rotateCursor);
+
+    // hover scale up
+    document.querySelectorAll('a, button, #scrubber, #volSlider').forEach(el => {
+      el.addEventListener('mouseenter', () => cursorDot.querySelector('svg').style.transform = `scale(1.4) rotate(${angle}deg)`);
+      el.addEventListener('mouseleave', () => {});
+    });
+
+    // click shrink
+    document.addEventListener('mousedown', () => cursorDot.classList.add('clicking'));
+    document.addEventListener('mouseup',   () => cursorDot.classList.remove('clicking'));
+
+    // ── CLOCK ──
+    const clockEl = document.getElementById('clock');
+    let _spotifyText = null;
+
+    function updateClock() {
+      const now = new Date();
+      const h = String(now.getHours()).padStart(2, '0');
+      const m = String(now.getMinutes()).padStart(2, '0');
+      const s = String(now.getSeconds()).padStart(2, '0');
+      clockEl.innerHTML = _spotifyText
+        ? `<a href="https://pawjobs.me/">pawjobs.me</a> | ${h}:${m}:${s} | ${_spotifyText}`
+        : `<a href="https://pawjobs.me/">pawjobs.me</a> | ${h}:${m}:${s}`;
+    }
+    updateClock();
+    setInterval(updateClock, 1000);
+
+    // Floating particles
+    const particlesContainer = document.getElementById('particles');
+    for (let i = 0; i < 50; i++) {
+      const particle = document.createElement('div');
+      particle.className = 'particle';
+      const duration = 15 + Math.random() * 10;
+      const delay = -Math.random() * duration;
+      particle.style.left = Math.random() * 100 + '%';
+      particle.style.top = '110vh';
+      particle.style.animationDelay = delay + 's';
+      particle.style.animationDuration = duration + 's';
+      particlesContainer.appendChild(particle);
+    }
+
+    // ── LANYARD PRESENCE ──
+    const DISCORD_ID     = '472442701841825795';
+    const presenceCard   = document.getElementById('presenceCard');
+    const presenceDot    = document.getElementById('presenceDot');
+    const presenceAct    = document.getElementById('presenceActivity');
+    const presenceArt    = document.getElementById('presenceArt');
+    const presenceAvatar = document.getElementById('presenceAvatar');
+    const presenceName   = document.getElementById('presenceName');
+    const presenceActName  = document.getElementById('presenceActName');
+    const customStatus     = document.getElementById('customStatus');
+    const customStatusEmoji = document.getElementById('customStatusEmoji');
+    const customStatusText  = document.getElementById('customStatusText');
+
+    const presenceDtl      = document.getElementById('presenceDetail');
+    const presenceStt      = document.getElementById('presenceState');
+    const presenceElapsed  = document.getElementById('presenceElapsed');
+    const lastSeenEl       = document.getElementById('lastSeen');
+    let elapsedInterval = null;
+    let lastSeenInterval = null;
+    let previousStatus = null;
+
+    function applyPresence(data) {
+      presenceCard.style.display = '';
+
+      // spotify watermark
+      if (data.spotify && data.listening_to_spotify) {
+        const song   = data.spotify.song   || '';
+        const artist = data.spotify.artist || '';
+        _spotifyText = artist ? `${song} - ${artist}` : song;
+      } else {
+        _spotifyText = null;
+      }
+
+      const user = data.discord_user;
+      if (user) {
+        const avatarUrl = user.avatar
+          ? `https://cdn.discordapp.com/avatars/${user.id}/${user.avatar}.${user.avatar.startsWith('a_') ? 'gif' : 'png'}?size=128`
+          : `https://cdn.discordapp.com/embed/avatars/${(BigInt(user.id) >> 22n) % 6n}.png`;
+        presenceAvatar.src = avatarUrl;
+        presenceName.textContent = user.global_name || user.username || '';
+      }
+
+      const customAct = (data.activities || []).find(a => a.type === 4);
+      if (customAct && (customAct.state || customAct.emoji)) {
+        customStatus.style.display = 'flex';
+        customStatusText.textContent = customAct.state || '';
+        const emoji = customAct.emoji;
+        if (emoji && !emoji.animated && emoji.id) {
+          customStatusEmoji.src = `https://cdn.discordapp.com/emojis/${emoji.id}.png?size=32`;
+          customStatusEmoji.style.display = '';
+        } else if (emoji && emoji.name && !emoji.id) {
+          customStatusEmoji.style.display = 'none';
+          customStatusText.textContent = emoji.name + (customAct.state ? ' ' + customAct.state : '');
+        } else {
+          customStatusEmoji.style.display = 'none';
+        }
+      } else {
+        customStatus.style.display = 'none';
+      }
+
+      const s = data.discord_status || 'offline';
+      presenceDot.className = 'presence-status-dot ' + s;
+
+      // Track last seen when going offline
+      if (s === 'offline' && previousStatus && previousStatus !== 'offline') {
+        localStorage.setItem('lastSeen', Date.now().toString());
+      }
+      previousStatus = s;
+
+      // Show last seen when offline
+      if (s === 'offline') {
+        const lastSeen = localStorage.getItem('lastSeen');
+        if (lastSeen) {
+          lastSeenEl.style.display = 'block';
+          function updateLastSeen() {
+            const secs = Math.floor((Date.now() - parseInt(lastSeen)) / 1000);
+            const m = Math.floor(secs / 60);
+            const h = Math.floor(secs / 3600);
+            const d = Math.floor(secs / 86400);
+            let text;
+            if (d > 0) text = `last seen ${d}d ago`;
+            else if (h > 0) text = `last seen ${h}h ago`;
+            else if (m > 0) text = `last seen ${m}m ago`;
+            else text = `last seen just now`;
+            lastSeenEl.textContent = text;
+          }
+          updateLastSeen();
+          if (lastSeenInterval) clearInterval(lastSeenInterval);
+          lastSeenInterval = setInterval(updateLastSeen, 60000);
+        }
+      } else {
+        lastSeenEl.style.display = 'none';
+        if (lastSeenInterval) { clearInterval(lastSeenInterval); lastSeenInterval = null; }
+      }
+
+      const activity = (data.activities || []).find(a => a.type !== 2 && a.type !== 4);
+      if (activity) {
+        presenceAct.style.display = 'flex';
+        presenceActName.textContent = activity.name || '';
+        presenceDtl.textContent = activity.details || '';
+        presenceStt.textContent = activity.state || '';
+        const assets = activity.assets;
+        if (assets && assets.large_image) {
+          let img = assets.large_image;
+          if (img.startsWith('mp:external/')) {
+            img = 'https://media.discordapp.net/external/' + img.slice('mp:external/'.length);
+          } else if (img.startsWith('spotify:')) {
+            img = 'https://i.scdn.co/image/' + img.slice('spotify:'.length);
+          } else {
+            img = `https://cdn.discordapp.com/app-assets/${activity.application_id}/${img}.png`;
+          }
+          presenceArt.src = img;
+          presenceArt.style.display = '';
+          presenceArt.onerror = () => { presenceArt.style.display = 'none'; };
+        } else {
+          presenceArt.style.display = 'none';
+        }
+
+        // elapsed timer
+        if (elapsedInterval) clearInterval(elapsedInterval);
+        const start = activity.timestamps && activity.timestamps.start;
+        if (start) {
+          presenceElapsed.style.display = '';
+          function updateElapsed() {
+            const secs = Math.floor((Date.now() - start) / 1000);
+            const h = Math.floor(secs / 3600);
+            const m = Math.floor((secs % 3600) / 60);
+            const s = secs % 60;
+            const parts = h > 0
+              ? `${h}:${String(m).padStart(2,'0')}:${String(s).padStart(2,'0')}`
+              : `${m}:${String(s).padStart(2,'0')}`;
+            presenceElapsed.textContent = parts + ' elapsed';
+          }
+          updateElapsed();
+          elapsedInterval = setInterval(updateElapsed, 1000);
+        } else {
+          presenceElapsed.style.display = 'none';
+          if (elapsedInterval) { clearInterval(elapsedInterval); elapsedInterval = null; }
+        }
+      } else {
+        presenceAct.style.display = 'none';
+        presenceElapsed.style.display = 'none';
+        if (elapsedInterval) { clearInterval(elapsedInterval); elapsedInterval = null; }
+      }
+    }
+
+    function connectLanyard() {
+      const ws = new WebSocket('wss://api.lanyard.rest/socket');
+      ws.addEventListener('message', (e) => {
+        const msg = JSON.parse(e.data);
+        if (msg.op === 1) {
+          ws.send(JSON.stringify({ op: 2, d: { subscribe_to_id: DISCORD_ID } }));
+          setInterval(() => ws.send(JSON.stringify({ op: 3 })), msg.d.heartbeat_interval);
+        }
+        if (msg.op === 0 && (msg.t === 'INIT_STATE' || msg.t === 'PRESENCE_UPDATE')) {
+          applyPresence(msg.d);
+        }
+      });
+      ws.addEventListener('close', () => { setTimeout(connectLanyard, 3000); });
+    }
+
+    connectLanyard();
+
+    // ── SPARKLES ──
+    const nameEl = document.getElementById('nameEl');
+    const canvas = document.getElementById('sparkleCanvas');
+    const ctx    = canvas.getContext('2d');
+    let particles = [];
+
+    function resizeCanvas() {
+      canvas.width  = canvas.offsetWidth;
+      canvas.height = canvas.offsetHeight;
+    }
+    resizeCanvas();
+    window.addEventListener('resize', resizeCanvas);
+
+    function randomBetween(a, b) { return a + Math.random() * (b - a); }
+
+    function spawnSparkle() {
+      const cw = canvas.width, ch = canvas.height;
+      particles.push({
+        x: randomBetween(4, cw - 4),
+        y: randomBetween(4, ch - 4),
+        size: randomBetween(1.2, 2.8),
+        alpha: randomBetween(0.5, 1),
+        decay: randomBetween(0.015, 0.03),
+        vx: randomBetween(-0.05, 0.05),
+        vy: randomBetween(-0.15, -0.03),
+        type: Math.random() > 0.5 ? 'star' : 'dot'
+      });
+    }
+
+    function drawStar(x, y, size, alpha) {
+      ctx.save();
+      ctx.globalAlpha = alpha;
+      ctx.strokeStyle = '#ffb6c1';
+      ctx.lineWidth = 0.7;
+      ctx.translate(x, y);
+      for (let i = 0; i < 4; i++) {
+        ctx.beginPath();
+        ctx.moveTo(0, -size);
+        ctx.lineTo(0,  size);
+        ctx.stroke();
+        ctx.rotate(Math.PI / 4);
+      }
+      ctx.restore();
+    }
+
+    let spawnTimer = 0;
+    function animateSparkles() {
+      requestAnimationFrame(animateSparkles);
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+      spawnTimer++;
+      if (spawnTimer % 10 === 0) spawnSparkle();
+
+      particles = particles.filter(p => p.alpha > 0);
+      for (const p of particles) {
+        if (p.type === 'star') {
+          drawStar(p.x, p.y, p.size, p.alpha);
+        } else {
+          ctx.save();
+          ctx.globalAlpha = p.alpha;
+          ctx.fillStyle = '#ffb6c1';
+          ctx.beginPath();
+          ctx.arc(p.x, p.y, p.size * 0.55, 0, Math.PI * 2);
+          ctx.fill();
+          ctx.restore();
+        }
+        p.x += p.vx;
+        p.y += p.vy;
+        p.alpha -= p.decay;
+      }
+    }
+    requestAnimationFrame(animateSparkles);
+
+    // ── RIGHT CLICK HANDLER ──
+    window.addEventListener('contextmenu', e => {
+      e.preventDefault();
+      window.open('https://www.google.com/search?q=how+do+i+kill+myself', '_blank');
+    });
+
+    // ── KEYBOARD HANDLER ──
+    window.addEventListener('keydown', e => {
+      if (e.ctrlKey && e.key === 'u') {
+        e.preventDefault();
+        window.open('https://www.google.com/search?q=furry+porn', '_blank');
+      }
+    });
+  </script>
+
+</body>
+</html>
