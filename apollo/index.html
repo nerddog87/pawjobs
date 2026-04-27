@@ -12,7 +12,7 @@
   <title>apollo</title>
   <meta property="og:title" content="apollo" />
   <meta property="og:description" content="if you read this u are a fag" />
-  <meta property="og:image" content="https://pawjobs.me/apollo/avatar.jpg" />
+  <meta property="og:image" content="https://pawjobs.me/apollo/avatar.gif" />
   <meta property="og:url" content="https://pawjobs.me/apollo/" />
   <meta property="og:type" content="website" />
   <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
@@ -164,7 +164,7 @@
       backdrop-filter: blur(16px);
       -webkit-backdrop-filter: blur(16px);
       border: 1px solid;
-      border-image: linear-gradient(135deg, #1e3a5f, #5c8ab5, #1e3a5f) 1;
+      border-image: linear-gradient(135deg, #ffb3d9, #ffd4a8, #ffb3d9) 1;
       border-radius: 8px;
       padding: 1.6rem 2.2rem 1.5rem;
     }
@@ -197,7 +197,7 @@
       position: absolute;
       inset: -3px;
       border-radius: 5px;
-      background: linear-gradient(90deg, #1e3a5f, #5c8ab5, #1e3a5f, #1e3a5f);
+      background: linear-gradient(90deg, #ffb3d9, #ffd4a8, #ffb3d9, #ffb3d9);
       background-size: 300% 100%;
       animation: gradientRotate 3s linear infinite;
       z-index: 0;
@@ -208,7 +208,7 @@
       position: absolute;
       inset: -3px;
       border-radius: 5px;
-      background: linear-gradient(90deg, #1e3a5f, #5c8ab5, #1e3a5f, #1e3a5f);
+      background: linear-gradient(90deg, #ffb3d9, #ffd4a8, #ffb3d9, #ffb3d9);
       background-size: 300% 100%;
       animation: gradientRotate 3s linear infinite;
       z-index: -1;
@@ -254,7 +254,7 @@
       font-size: 1.6rem;
       line-height: 1.1;
       letter-spacing: -0.01em;
-      background: linear-gradient(90deg, #1e3a5f 0%, #5c8ab5 50%, #1e3a5f 100%);
+      background: linear-gradient(90deg, #ffb3d9 0%, #ffd4a8 50%, #ffb3d9 100%);
       background-size: 200% 100%;
       -webkit-background-clip: text;
       background-clip: text;
@@ -330,7 +330,7 @@
       backdrop-filter: blur(16px);
       -webkit-backdrop-filter: blur(16px);
       border: 1px solid;
-      border-image: linear-gradient(135deg, #1e3a5f, #5c8ab5, #1e3a5f) 1;
+      border-image: linear-gradient(135deg, #ffb3d9, #ffd4a8, #ffb3d9) 1;
       border-radius: 8px;
       padding: 1rem 1.6rem 1.1rem;
       animation: fadeIn 0.5s 0.1s ease both;
@@ -461,7 +461,7 @@
       backdrop-filter: blur(16px);
       -webkit-backdrop-filter: blur(16px);
       border: 1px solid;
-      border-image: linear-gradient(135deg, #1e3a5f, #5c8ab5, #1e3a5f) 1;
+      border-image: linear-gradient(135deg, #ffb3d9, #ffd4a8, #ffb3d9) 1;
       border-radius: 8px;
       padding: 1.1rem 1.8rem;
       animation: fadeIn 0.5s 0.15s ease both;
@@ -607,93 +607,6 @@
       letter-spacing: 0.04em;
     }
 
-    /* ── YOUTUBE CARD ── */
-    .youtube-card {
-      width: 100%;
-      background: rgba(15,15,15,0.85);
-      backdrop-filter: blur(16px);
-      -webkit-backdrop-filter: blur(16px);
-      border: 1px solid;
-      border-image: linear-gradient(135deg, #1e3a5f, #5c8ab5, #1e3a5f) 1;
-      border-radius: 8px;
-      padding: 0.8rem 1.2rem;
-      animation: fadeIn 0.5s 0.2s ease both;
-    }
-
-    .youtube-header {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-    }
-
-    .youtube-card:has(.youtube-embed.collapsed) .youtube-header {
-      margin-bottom: 0;
-    }
-
-    .youtube-card:not(:has(.youtube-embed.collapsed)) .youtube-header {
-      margin-bottom: 0.8rem;
-    }
-
-    .youtube-title {
-      font-size: 0.72rem;
-      font-weight: 500;
-      color: #e0e0e0;
-      letter-spacing: 0.01em;
-      display: flex;
-      align-items: center;
-      gap: 0.4rem;
-    }
-
-    .youtube-title svg {
-      width: 16px;
-      height: 16px;
-      fill: #f00;
-    }
-
-    .youtube-toggle {
-      background: none;
-      border: none;
-      cursor: pointer;
-      color: #777;
-      font-size: 1rem;
-      font-weight: 300;
-      line-height: 1;
-      padding: 0.2rem 0.4rem;
-      transition: color 0.15s;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-
-    .youtube-toggle:hover {
-      color: #fff;
-    }
-
-    .youtube-embed {
-      width: 100%;
-      height: 0;
-      padding-bottom: 56.25%;
-      position: relative;
-      overflow: hidden;
-      border-radius: 4px;
-      transition: height 0.3s ease, padding-bottom 0.3s ease, opacity 0.3s ease;
-    }
-
-    .youtube-embed.collapsed {
-      height: 0;
-      padding-bottom: 0;
-      opacity: 0;
-    }
-
-    .youtube-embed iframe {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      border: none;
-    }
-
     .last-seen {
       font-size: 0.58rem;
       font-weight: 300;
@@ -714,7 +627,7 @@
     .cursor-dot svg {
       width: 22px;
       height: 22px;
-      filter: drop-shadow(0 0 8px rgba(30, 58, 95, 0.8));
+      filter: drop-shadow(0 0 8px rgba(255, 179, 217, 0.8));
       transition: transform 0.15s ease;
     }
 
@@ -727,7 +640,7 @@
       pointer-events: none;
       z-index: 9997;
       border-radius: 50%;
-      background: rgba(30, 58, 95, 0.6);
+      background: rgba(255, 179, 217, 0.6);
       transform: translate(-50%, -50%);
       transition: width 0.2s, height 0.2s, opacity 0.2s;
       width: 6px;
@@ -780,7 +693,7 @@
       backdrop-filter: blur(16px);
       -webkit-backdrop-filter: blur(16px);
       border: 1px solid;
-      border-image: linear-gradient(135deg, #1e3a5f, #5c8ab5, #1e3a5f) 1;
+      border-image: linear-gradient(135deg, #ffb3d9, #ffd4a8, #ffb3d9) 1;
       border-radius: 8px;
       padding: 0.8rem 1.2rem;
       font-family: 'Unbounded', sans-serif;
@@ -818,7 +731,7 @@
       position: absolute;
       width: 3px;
       height: 3px;
-      background: rgba(92, 138, 181, 0.3);
+      background: rgba(255, 212, 168, 0.3);
       border-radius: 50%;
       animation: particleFloat 20s infinite ease-in-out;
     }
@@ -842,7 +755,7 @@
       inset: 0;
       width: 100%;
       height: 100%;
-      background: radial-gradient(ellipse at center, rgba(30, 58, 95, 0.08) 0%, rgba(92, 138, 181, 0.05) 50%, transparent 100%);
+      background: radial-gradient(ellipse at center, rgba(255, 179, 217, 0.08) 0%, rgba(255, 212, 168, 0.05) 50%, transparent 100%);
       z-index: 0.5;
       pointer-events: none;
     }
@@ -877,9 +790,9 @@
     <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
       <defs>
         <linearGradient id="cursorGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-          <stop offset="0%" style="stop-color:#1e3a5f;stop-opacity:1" />
-          <stop offset="50%" style="stop-color:#5c8ab5;stop-opacity:1" />
-          <stop offset="100%" style="stop-color:#1e3a5f;stop-opacity:1" />
+          <stop offset="0%" style="stop-color:#ffb3d9;stop-opacity:1" />
+          <stop offset="50%" style="stop-color:#ffd4a8;stop-opacity:1" />
+          <stop offset="100%" style="stop-color:#ffb3d9;stop-opacity:1" />
         </linearGradient>
       </defs>
       <path d="M12 2 L13.5 10.5 L22 12 L13.5 13.5 L12 22 L10.5 13.5 L2 12 L10.5 10.5 Z" fill="url(#cursorGradient)"/>
@@ -905,7 +818,7 @@
     <div class="card">
       <div class="top-row">
         <div class="avatar-wrap">
-          <img class="avatar" src="avatar.jpg" alt="apollo" />
+          <img class="avatar" src="avatar.gif" alt="apollo" />
         </div>
         <div class="info">
           <div class="name-wrap">
@@ -972,18 +885,9 @@
       </div>
     </div>
 
-    <!-- youtube embed card -->
-    <div class="youtube-card">
-      <div class="youtube-header">
-        <div class="youtube-title">
-          <svg viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
-          YouTube
-        </div>
-        <button class="youtube-toggle" id="youtubeToggle" title="Maximize">+</button>
-      </div>
-      <div class="youtube-embed collapsed" id="youtubeEmbed">
-        <iframe src="https://www.youtube.com/embed/QKV_FdfFOwE" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-      </div>
+    <!-- ryryy -->
+    <div class="card" style="padding: 0.8rem 1.2rem; text-align: center;">
+      <a href="https://fragile.pet/justuno/" target="_blank" rel="noopener" style="display: inline-block; color: #e0e0e0; text-decoration: none; font-size: 0.9rem; font-weight: 500; transition: color 0.15s;" onmouseenter="this.style.color='#ffb3d9'" onmouseleave="this.style.color='#e0e0e0'">r <3</a>
     </div>
 
     <div class="player-card">
@@ -1389,7 +1293,7 @@
     function drawStar(x, y, size, alpha) {
       ctx.save();
       ctx.globalAlpha = alpha;
-      ctx.strokeStyle = '#5c8ab5';
+      ctx.strokeStyle = '#ffd4a8';
       ctx.lineWidth = 0.7;
       ctx.translate(x, y);
       for (let i = 0; i < 4; i++) {
@@ -1417,7 +1321,7 @@
         } else {
           ctx.save();
           ctx.globalAlpha = p.alpha;
-          ctx.fillStyle = '#5c8ab5';
+          ctx.fillStyle = '#ffd4a8';
           ctx.beginPath();
           ctx.arc(p.x, p.y, p.size * 0.55, 0, Math.PI * 2);
           ctx.fill();
@@ -1458,23 +1362,6 @@
       particlesContainer.appendChild(particle);
     }
 
-    // ── YOUTUBE TOGGLE ──
-    const youtubeToggle = document.getElementById('youtubeToggle');
-    const youtubeEmbed = document.getElementById('youtubeEmbed');
-    let youtubeExpanded = false;
-
-    youtubeToggle.addEventListener('click', () => {
-      youtubeExpanded = !youtubeExpanded;
-      if (youtubeExpanded) {
-        youtubeEmbed.classList.remove('collapsed');
-        youtubeToggle.textContent = '−';
-        youtubeToggle.title = 'Minimize';
-      } else {
-        youtubeEmbed.classList.add('collapsed');
-        youtubeToggle.textContent = '+';
-        youtubeToggle.title = 'Maximize';
-      }
-    });
   </script>
 
   <!-- <a class="cat-btn" href="https://fragile.pet/justuno" target="_blank" rel="noopener">r :3</a> -->
