@@ -454,6 +454,22 @@
     }
     .vol-slider:hover .vol-thumb { opacity: 1; }
 
+    /* ── MOBILE PLAYER FIX ── */
+    @media (max-width: 480px) {
+      .player-controls-row {
+        gap: 0.5rem;
+      }
+      .vol-slider {
+        display: none;
+      }
+      .time-label {
+        font-size: 0.55rem;
+        min-width: 2.4rem;
+      }
+      .ctrl-btn.play svg { width: 18px; height: 18px; }
+      .ctrl-btn.mute svg { width: 14px; height: 14px; }
+    }
+
     /* ── PRESENCE CARD ── */
     .presence-card {
       width: 100%;
