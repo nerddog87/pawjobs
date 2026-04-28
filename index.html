@@ -275,6 +275,12 @@
       100% { opacity: 0; transform: translate(-50%, 180%) scale(0.3) rotate(180deg); }
     }
 
+    @media (pointer: coarse) {
+      * { cursor: auto !important; }
+      .cursor-dot { display: none !important; }
+      .cursor-spark { display: none !important; }
+    }
+
     .particles-container {
       position: fixed;
       inset: 0;
