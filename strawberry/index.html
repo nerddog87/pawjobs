@@ -11,7 +11,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>strawberry</title>
   <meta property="og:title" content="strawberry" />
-  <meta property="og:description" content="pawjobs.me/strawberry" />
+  <meta property="og:description" content="j" />
   <meta property="og:image" content="https://pawjobs.me/strawberry/avatar.jpg" />
   <meta property="og:url" content="https://pawjobs.me/strawberry/" />
   <meta property="og:type" content="profile" />
@@ -499,13 +499,6 @@
       object-fit: contain;
     }
 
-    .last-seen {
-      font-size: 0.50rem;
-      font-weight: 300;
-      color: #a09095;
-      margin-top: 0.2rem;
-    }
-
     .presence-avatar-wrap {
       position: relative;
       flex-shrink: 0;
@@ -811,7 +804,6 @@
             <img class="custom-status-emoji" id="customStatusEmoji" src="" alt="" style="display:none" />
             <span class="custom-status-text" id="customStatusText"></span>
           </div>
-          <div class="last-seen" id="lastSeen" style="display:none"></div>
         </div>
       </div>
       <div class="presence-activity" id="presenceActivity" style="display:none">
@@ -1038,10 +1030,7 @@
     const presenceDtl      = document.getElementById('presenceDetail');
     const presenceStt      = document.getElementById('presenceState');
     const presenceElapsed  = document.getElementById('presenceElapsed');
-    const lastSeenEl       = document.getElementById('lastSeen');
     let elapsedInterval = null;
-    let lastSeenInterval = null;
-    let previousStatus = null;
 
     function applyPresence(data) {
       presenceCard.style.display = '';
@@ -1084,39 +1073,6 @@
 
       const s = data.discord_status || 'offline';
       presenceDot.className = 'presence-status-dot ' + s;
-
-      // Track last seen timestamp
-      if (s !== 'offline') {
-        // Update lastSeen continuously while online
-        localStorage.setItem('lastSeen', Date.now().toString());
-      }
-      previousStatus = s;
-
-      // Show last seen when offline
-      if (s === 'offline') {
-        const lastSeen = localStorage.getItem('lastSeen');
-        if (lastSeen) {
-          lastSeenEl.style.display = 'block';
-          function updateLastSeen() {
-            const secs = Math.floor((Date.now() - parseInt(lastSeen)) / 1000);
-            const m = Math.floor(secs / 60);
-            const h = Math.floor(secs / 3600);
-            const d = Math.floor(secs / 86400);
-            let text;
-            if (d > 0) text = `last seen ${d}d ago`;
-            else if (h > 0) text = `last seen ${h}h ago`;
-            else if (m > 0) text = `last seen ${m}m ago`;
-            else text = `last seen just now`;
-            lastSeenEl.textContent = text;
-          }
-          updateLastSeen();
-          if (lastSeenInterval) clearInterval(lastSeenInterval);
-          lastSeenInterval = setInterval(updateLastSeen, 60000);
-        }
-      } else {
-        lastSeenEl.style.display = 'none';
-        if (lastSeenInterval) { clearInterval(lastSeenInterval); lastSeenInterval = null; }
-      }
 
       const activity = (data.activities || []).find(a => a.type !== 2 && a.type !== 4);
       if (activity) {
