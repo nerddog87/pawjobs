@@ -460,6 +460,22 @@
     }
     .vol-slider:hover .vol-thumb { opacity: 1; }
 
+    /* ── MOBILE PLAYER FIX ── */
+    @media (max-width: 480px) {
+      .player-controls-row {
+        gap: 0.5rem;
+      }
+      .vol-slider {
+        display: none;
+      }
+      .time-label {
+        font-size: 0.55rem;
+        min-width: 2.4rem;
+      }
+      .ctrl-btn.play svg { width: 18px; height: 18px; }
+      .ctrl-btn.mute svg { width: 14px; height: 14px; }
+    }
+
     /* ── PRESENCE CARD ── */
     .presence-card {
       width: 100%;
@@ -646,6 +662,12 @@
       0% { opacity: 1; transform: translate(-50%, -50%) scale(1) rotate(0deg); }
       30% { opacity: 1; }
       100% { opacity: 0; transform: translate(-50%, 180%) scale(0.3) rotate(180deg); }
+    }
+
+    @media (pointer: coarse) {
+      * { cursor: auto !important; }
+      .cursor-dot { display: none !important; }
+      .cursor-spark { display: none !important; }
     }
 
     .clock {
@@ -1054,7 +1076,8 @@
       const h = String(now.getHours()).padStart(2, '0');
       const m = String(now.getMinutes()).padStart(2, '0');
       const s = String(now.getSeconds()).padStart(2, '0');
-      clockEl.innerHTML = _spotifyText
+      const isMobile = window.innerWidth <= 480;
+      clockEl.innerHTML = _spotifyText && !isMobile
         ? `<a href="https://pawjobs.me/">pawjobs.me</a> | ${h}:${m}:${s} | ${_spotifyText}`
         : `<a href="https://pawjobs.me/">pawjobs.me</a> | ${h}:${m}:${s}`;
     }
