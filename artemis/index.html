@@ -6,7 +6,7 @@
   <title>artemis</title>
   <meta property="og:title" content="artemis" />
   <meta property="og:description" content="pawjobs.me/artemis" />
-  <meta property="og:image" content="https://pawjobs.me/artemis/avatar.gif" />
+  <meta property="og:image" content="https://pawjobs.me/artemis/avatar.jpg" />
   <meta property="og:url" content="https://pawjobs.me/artemis/" />
   <meta property="og:type" content="website" />
   <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
@@ -63,35 +63,35 @@
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     html, body {
-      height: 100%;
+      min-height: 100%;
       font-family: 'Unbounded', sans-serif;
       display: flex;
-      align-items: center;
+      align-items: safe center;
       justify-content: center;
       padding: 2rem 5vw;
-      overflow: hidden;
-      background: #faf8f5;
+      overflow-x: hidden;
+      overflow-y: auto;
     }
 
     .bg-video {
       position: fixed; inset: 0;
       width: 100%; height: 100%;
-      background: 
+      background:
         repeating-linear-gradient(
           90deg,
           transparent,
-          transparent 2px,
-          rgba(255, 179, 217, 0.03) 2px,
-          rgba(255, 179, 217, 0.03) 4px
+          transparent 50px,
+          rgba(255,255,255,0.03) 50px,
+          rgba(255,255,255,0.03) 52px
         ),
         repeating-linear-gradient(
           0deg,
           transparent,
-          transparent 2px,
-          rgba(255, 212, 168, 0.02) 2px,
-          rgba(255, 212, 168, 0.02) 4px
+          transparent 50px,
+          rgba(255,255,255,0.02) 50px,
+          rgba(255,255,255,0.02) 52px
         ),
-        #faf8f5;
+        #050505;
       z-index: -1;
     }
     .bg-overlay {
@@ -110,7 +110,7 @@
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      background: rgba(250, 248, 245, 0.9);
+      background: rgba(0,0,0,0.72);
       backdrop-filter: blur(8px);
       -webkit-backdrop-filter: blur(8px);
       cursor: pointer;
@@ -128,7 +128,7 @@
       font-family: 'Unbounded', sans-serif !important;
       font-size: 0.65rem;
       font-weight: 500;
-      color: rgba(80, 60, 70, 0.7);
+      color: rgba(255,255,255,0.6);
       letter-spacing: 0.15em;
       text-transform: uppercase;
     }
@@ -145,6 +145,7 @@
       transform: translateY(-60px);
       transition: opacity 0.8s ease, transform 0.8s cubic-bezier(0.34, 1.56, 0.64, 1);
       pointer-events: none;
+      margin-bottom: 2rem;
     }
 
     .layout.visible {
@@ -155,20 +156,20 @@
 
     .card {
       width: 100%;
-      background: rgba(255, 255, 255, 0.85);
+      background: rgba(15,15,15,0.85);
       backdrop-filter: blur(16px);
       -webkit-backdrop-filter: blur(16px);
       border: 1px solid;
-      border-image: linear-gradient(135deg, #ffb3d9, #ffd4a8, #ffb3d9) 1;
+      border-image: linear-gradient(135deg, #a855f7, #c084fc, #a855f7) 1;
       border-radius: 8px;
       padding: 1.6rem 2.2rem 1.5rem;
-      box-shadow: 0 4px 30px rgba(255, 179, 217, 0.1);
     }
 
     .top-row {
       display: flex;
       align-items: center;
       gap: 1.4rem;
+      margin-bottom: 1.3rem;
     }
 
     .avatar {
@@ -192,7 +193,7 @@
       position: absolute;
       inset: -3px;
       border-radius: 5px;
-      background: linear-gradient(90deg, #ffb3d9, #ffd4a8, #ffb3d9, #ffd4a8);
+      background: linear-gradient(90deg, #a855f7, #c084fc, #a855f7, #a855f7);
       background-size: 300% 100%;
       animation: gradientRotate 3s linear infinite;
       z-index: 0;
@@ -203,7 +204,7 @@
       position: absolute;
       inset: -3px;
       border-radius: 5px;
-      background: linear-gradient(90deg, #ffb3d9, #ffd4a8, #ffb3d9, #ffd4a8);
+      background: linear-gradient(90deg, #a855f7, #c084fc, #a855f7, #a855f7);
       background-size: 300% 100%;
       animation: gradientRotate 3s linear infinite;
       z-index: -1;
@@ -249,7 +250,7 @@
       font-size: 1.6rem;
       line-height: 1.1;
       letter-spacing: -0.01em;
-      background: linear-gradient(90deg, #ffb3d9 0%, #ffd4a8 50%, #ffb3d9 100%);
+      background: linear-gradient(90deg, #a855f7 0%, #c084fc 50%, #a855f7 100%);
       background-size: 200% 100%;
       -webkit-background-clip: text;
       background-clip: text;
@@ -272,26 +273,27 @@
     .handle {
       font-weight: 300;
       font-size: 0.65rem;
-      color: #8a7a80;
+      color: #4a4a4a;
       letter-spacing: 0.06em;
     }
 
     .divider {
       border: none;
-      border-top: 1px solid rgba(255, 179, 217, 0.15);
+      border-top: 1px solid rgba(255,255,255,0.06);
+      margin-top: 1.2rem;
       margin-bottom: 1.2rem;
     }
 
     .socials { display: flex; gap: 1.2rem; align-items: center; }
 
     .social-link {
-      color: #a09095;
+      color: #555;
       text-decoration: none;
       display: flex;
       transition: color 0.15s;
       position: relative;
     }
-    .social-link:hover { color: #ffb3d9; }
+    .social-link:hover { color: #fff; }
     .social-link svg { width: 24px; height: 24px; fill: currentColor; }
 
     .social-link::after {
@@ -300,9 +302,9 @@
       bottom: calc(100% + 8px);
       left: 50%;
       transform: translateX(-50%) translateY(4px);
-      background: rgba(255, 255, 255, 0.95);
-      border: 1px solid rgba(255, 179, 217, 0.3);
-      color: #6a5a60;
+      background: rgba(20,20,20,0.95);
+      border: 1px solid rgba(255,255,255,0.1);
+      color: #ccc;
       font-size: 0.5rem;
       letter-spacing: 0.08em;
       padding: 0.3rem 0.55rem;
@@ -320,15 +322,14 @@
 
     .player-card {
       width: 100%;
-      background: rgba(255, 255, 255, 0.85);
+      background: rgba(15,15,15,0.85);
       backdrop-filter: blur(16px);
       -webkit-backdrop-filter: blur(16px);
       border: 1px solid;
-      border-image: linear-gradient(135deg, #ffb3d9, #ffd4a8, #ffb3d9) 1;
+      border-image: linear-gradient(135deg, #a855f7, #c084fc, #a855f7) 1;
       border-radius: 8px;
       padding: 1rem 1.6rem 1.1rem;
       animation: fadeIn 0.5s 0.1s ease both;
-      box-shadow: 0 4px 30px rgba(255, 179, 217, 0.1);
     }
 
     .player-title-row {
@@ -341,7 +342,7 @@
     .player-song {
       font-size: 0.72rem;
       font-weight: 500;
-      color: #5a4a50;
+      color: #e0e0e0;
       letter-spacing: 0.01em;
       white-space: nowrap;
       overflow: hidden;
@@ -351,7 +352,7 @@
     .spotify-link {
       display: inline-flex;
       align-items: center;
-      color: #8a7a80;
+      color: #aaa;
       text-decoration: none;
       opacity: 0.65;
       transition: opacity 0.15s;
@@ -368,7 +369,7 @@
 
     .ctrl-btn {
       background: none; border: none; cursor: pointer;
-      color: #5a4a50; padding: 0;
+      color: #fff; padding: 0;
       display: flex; align-items: center; justify-content: center;
       transition: opacity 0.12s, transform 0.1s; line-height: 1;
       flex-shrink: 0;
@@ -383,20 +384,20 @@
     .vol-dot {
       width: 8px; height: 8px;
       border-radius: 50%;
-      background: #ffb3d9;
+      background: #fff;
       flex-shrink: 0;
       opacity: 0.7;
     }
 
     .time-label {
       font-size: 0.62rem; font-weight: 300;
-      color: #a09095; letter-spacing: 0.05em; min-width: 2.8rem;
+      color: #555; letter-spacing: 0.05em; min-width: 2.8rem;
     }
     .time-label.right { text-align: right; }
 
     .scrubber {
       flex: 1; height: 4px;
-      background: rgba(255, 179, 217, 0.2);
+      background: rgba(255,255,255,0.12);
       border-radius: 99px; position: relative;
       cursor: pointer; transition: height 0.15s;
     }
@@ -404,7 +405,7 @@
 
     .scrubber-fill {
       position: absolute; left: 0; top: 0; bottom: 0;
-      background: linear-gradient(90deg, #ffb3d9, #ffd4a8); border-radius: 99px; width: 0%;
+      background: linear-gradient(90deg, #a855f7, #c084fc); border-radius: 99px; width: 0%;
       pointer-events: none;
     }
 
@@ -412,7 +413,7 @@
       position: absolute; top: 50%;
       transform: translate(-50%, -50%);
       width: 11px; height: 11px; border-radius: 50%;
-      background: #ffb3d9; left: 0%; pointer-events: none;
+      background: #fff; left: 0%; pointer-events: none;
       opacity: 0; transition: opacity 0.15s;
     }
     .scrubber:hover .scrubber-thumb { opacity: 1; }
@@ -420,7 +421,7 @@
     .vol-slider {
       width: 72px;
       height: 4px;
-      background: rgba(255, 179, 217, 0.2);
+      background: rgba(255,255,255,0.12);
       border-radius: 99px;
       cursor: pointer;
       position: relative;
@@ -430,7 +431,7 @@
     .vol-slider:hover { height: 6px; }
     .vol-fill {
       height: 100%;
-      background: linear-gradient(90deg, #ffb3d9, #ffd4a8);
+      background: linear-gradient(90deg, #a855f7, #c084fc);
       border-radius: 99px;
       width: 25%;
       pointer-events: none;
@@ -441,7 +442,7 @@
       transform: translate(-50%, -50%);
       width: 11px; height: 11px;
       border-radius: 50%;
-      background: #ffb3d9;
+      background: #fff;
       pointer-events: none;
       opacity: 0;
       transition: opacity 0.15s;
@@ -449,14 +450,30 @@
     }
     .vol-slider:hover .vol-thumb { opacity: 1; }
 
+    /* ── MOBILE PLAYER FIX ── */
+    @media (max-width: 480px) {
+      .player-controls-row {
+        gap: 0.5rem;
+      }
+      .vol-slider {
+        display: none;
+      }
+      .time-label {
+        font-size: 0.55rem;
+        min-width: 2.4rem;
+      }
+      .ctrl-btn.play svg { width: 18px; height: 18px; }
+      .ctrl-btn.mute svg { width: 14px; height: 14px; }
+    }
+
     /* ── PRESENCE CARD ── */
     .presence-card {
       width: 100%;
-      background: rgba(255, 255, 255, 0.85);
+      background: rgba(15,15,15,0.85);
       backdrop-filter: blur(16px);
       -webkit-backdrop-filter: blur(16px);
       border: 1px solid;
-      border-image: linear-gradient(135deg, #ffb3d9, #ffd4a8, #ffb3d9) 1;
+      border-image: linear-gradient(135deg, #a855f7, #c084fc, #a855f7) 1;
       border-radius: 8px;
       padding: 1.1rem 1.8rem;
       animation: fadeIn 0.5s 0.15s ease both;
@@ -464,7 +481,6 @@
       flex-direction: column;
       align-items: flex-start;
       gap: 0.75rem;
-      box-shadow: 0 4px 30px rgba(255, 179, 217, 0.1);
     }
 
     .presence-row {
@@ -499,7 +515,7 @@
       width: 62px; height: 62px;
       border-radius: 50%;
       object-fit: cover;
-      border: 1px solid rgba(255, 179, 217, 0.3);
+      border: 1px solid rgba(255,255,255,0.1);
       display: block;
     }
 
@@ -510,7 +526,7 @@
       bottom: 1px; right: 1px;
       width: 14px; height: 14px;
       border-radius: 50%;
-      border: 2px solid #faf8f5;
+      border: 2px solid #0a0a0a;
       background: #555;
       z-index: 3;
     }
@@ -528,7 +544,7 @@
     .presence-name {
       font-size: 0.9rem;
       font-weight: 500;
-      color: #5a4a50;
+      color: #e0e0e0;
     }
 
     .presence-name-row {
@@ -545,7 +561,7 @@
       justify-content: flex-start;
       gap: 0.75rem;
       padding-top: 0.6rem;
-      border-top: 1px solid rgba(255, 179, 217, 0.15);
+      border-top: 1px solid rgba(255,255,255,0.06);
       width: 100%;
     }
 
@@ -554,7 +570,7 @@
       border-radius: 4px;
       object-fit: cover;
       flex-shrink: 0;
-      border: 1px solid rgba(255, 179, 217, 0.2);
+      border: 1px solid rgba(255,255,255,0.08);
     }
 
     .presence-act-info {
@@ -567,21 +583,21 @@
     .presence-act-name {
       font-size: 0.6rem;
       font-weight: 500;
-      color: #5a4a50;
+      color: #e0e0e0;
       white-space: nowrap;
       overflow: hidden;
       text-overflow: ellipsis;
     }
 
     .playing-label {
-      color: #a09095;
+      color: #444;
       font-weight: 300;
     }
 
     .presence-act-detail, .presence-act-state {
-      font-size: 0.5rem;
+      font-size: 0.58rem;
       font-weight: 300;
-      color: #8a7a80;
+      color: #777;
       white-space: nowrap;
       overflow: hidden;
       text-overflow: ellipsis;
@@ -590,11 +606,16 @@
     .presence-elapsed {
       font-size: 0.48rem;
       font-weight: 300;
-      color: #a09095;
+      color: #444;
       letter-spacing: 0.04em;
     }
 
     * { cursor: none !important; }
+
+    @media (pointer: coarse) {
+      * { cursor: auto !important; }
+      .cursor-dot { display: none !important; }
+    }
 
     .cursor-dot {
       position: fixed;
@@ -607,7 +628,7 @@
     .cursor-dot svg {
       width: 22px;
       height: 22px;
-      filter: drop-shadow(0 0 8px rgba(255, 179, 217, 0.8));
+      filter: drop-shadow(0 0 8px rgba(168, 85, 247, 0.8));
       transition: transform 0.15s ease;
     }
 
@@ -615,17 +636,26 @@
       transform: scale(0.7) rotate(45deg);
     }
 
-    .cursor-trail {
+    .cursor-spark {
       position: fixed;
       pointer-events: none;
       z-index: 9997;
-      border-radius: 50%;
-      background: rgba(255, 179, 217, 0.6);
       transform: translate(-50%, -50%);
-      transition: width 0.2s, height 0.2s, opacity 0.2s;
-      width: 6px;
-      height: 6px;
-      opacity: 0;
+      animation: sparkFade 0.6s ease-out forwards;
+    }
+
+    .cursor-spark::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, #a855f7, #c084fc);
+      clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
+    }
+
+    @keyframes sparkFade {
+      0% { opacity: 1; transform: translate(-50%, -50%) scale(1) rotate(0deg); }
+      30% { opacity: 1; }
+      100% { opacity: 0; transform: translate(-50%, 180%) scale(0.3) rotate(180deg); }
     }
 
     .clock {
@@ -635,20 +665,20 @@
       z-index: 10;
       font-size: 0.65rem;
       font-weight: 400;
-      color: rgba(90, 74, 80, 0.6);
+      color: rgba(255,255,255,0.45);
       letter-spacing: 0.08em;
       pointer-events: auto;
       user-select: none;
     }
 
     .clock a {
-      color: rgba(90, 74, 80, 0.6);
+      color: rgba(255,255,255,0.45);
       text-decoration: none;
       transition: color 0.15s ease;
     }
 
     .clock a:hover {
-      color: rgba(90, 74, 80, 0.9);
+      color: rgba(255,255,255,0.75);
     }
 
     .watermark {
@@ -658,7 +688,7 @@
       z-index: 2;
       font-size: 0.65rem;
       font-weight: 400;
-      color: rgba(90, 74, 80, 0.6);
+      color: rgba(255,255,255,0.45);
       letter-spacing: 0.08em;
       pointer-events: none;
       user-select: none;
@@ -669,33 +699,64 @@
       bottom: 1rem;
       right: 1rem;
       z-index: 10;
-      background: rgba(255, 255, 255, 0.85);
+      background: rgba(15,15,15,0.85);
       backdrop-filter: blur(16px);
       -webkit-backdrop-filter: blur(16px);
       border: 1px solid;
-      border-image: linear-gradient(135deg, #ffb3d9, #ffd4a8, #ffb3d9) 1;
+      border-image: linear-gradient(135deg, #a855f7, #c084fc, #a855f7) 1;
       border-radius: 8px;
       padding: 0.8rem 1.2rem;
       font-family: 'Unbounded', sans-serif;
       font-size: 0.8rem;
       font-weight: 500;
-      color: rgba(90, 74, 80, 0.7);
+      color: rgba(255,255,255,0.7);
       text-decoration: none;
       cursor: pointer;
       display: inline-flex;
       align-items: center;
       justify-content: center;
       transition: all 0.15s ease;
-      box-shadow: 0 4px 30px rgba(255, 179, 217, 0.1);
     }
+
     .cat-btn:hover {
-      color: #5a4a50;
-      border-color: rgba(255, 179, 217, 0.5);
+      color: #fff;
+      border-color: rgba(255,255,255,0.15);
       transform: scale(1.05);
     }
 
     .cat-btn:active {
       transform: scale(0.95);
+    }
+
+    /* ── AMBIENT PARTICLES ── */
+    .particles-container {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 0;
+      overflow: hidden;
+    }
+
+    .particle {
+      position: absolute;
+      width: 3px;
+      height: 3px;
+      background: rgba(192, 132, 252, 0.3);
+      border-radius: 50%;
+      animation: particleFloat 20s infinite ease-in-out;
+    }
+
+    @keyframes particleFloat {
+      0% {
+        transform: translateY(110vh) translateX(0) rotate(0deg);
+        opacity: 0;
+      }
+      5% { opacity: 0.4; }
+      85% { opacity: 0.4; }
+      100% {
+        transform: translateY(-50vh) translateX(30px) rotate(360deg);
+        opacity: 0;
+      }
     }
 
     /* ── COLOR VIGNETTE BACKGROUND ── */
@@ -704,7 +765,7 @@
       inset: 0;
       width: 100%;
       height: 100%;
-      background: radial-gradient(ellipse at center, rgba(255, 179, 217, 0.08) 0%, rgba(255, 212, 168, 0.05) 50%, transparent 100%);
+      background: radial-gradient(ellipse at center, rgba(168, 85, 247, 0.08) 0%, rgba(192, 132, 252, 0.05) 50%, transparent 100%);
       z-index: 0.5;
       pointer-events: none;
     }
@@ -715,9 +776,21 @@
       inset: 0;
       width: 100%;
       height: 100%;
-      background: radial-gradient(ellipse at center, transparent 0%, rgba(255, 179, 217, 0.1) 100%);
+      background: radial-gradient(ellipse at center, transparent 0%, rgba(0, 0, 0, 0.6) 100%);
       z-index: 0.5;
       pointer-events: none;
+      animation: vignetteBreathe 4s ease-in-out infinite;
+    }
+
+    @keyframes vignetteBreathe {
+      0%, 100% {
+        opacity: 0.8;
+        transform: scale(1);
+      }
+      50% {
+        opacity: 1;
+        transform: scale(1.05);
+      }
     }
   </style>
 </head>
@@ -727,9 +800,9 @@
     <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
       <defs>
         <linearGradient id="cursorGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-          <stop offset="0%" style="stop-color:#ffb3d9;stop-opacity:1" />
-          <stop offset="50%" style="stop-color:#ffd4a8;stop-opacity:1" />
-          <stop offset="100%" style="stop-color:#ffb3d9;stop-opacity:1" />
+          <stop offset="0%" style="stop-color:#a855f7;stop-opacity:1" />
+          <stop offset="50%" style="stop-color:#c084fc;stop-opacity:1" />
+          <stop offset="100%" style="stop-color:#a855f7;stop-opacity:1" />
         </linearGradient>
       </defs>
       <path d="M12 2 L13.5 10.5 L22 12 L13.5 13.5 L12 22 L10.5 13.5 L2 12 L10.5 10.5 Z" fill="url(#cursorGradient)"/>
@@ -740,6 +813,7 @@
   <div class="bg-overlay"></div>
   <div class="color-vignette"></div>
   <div class="vignette"></div>
+  <div class="particles-container" id="particles"></div>
 
   <div class="clock" id="clock"></div>
 
@@ -754,14 +828,14 @@
     <div class="card">
       <div class="top-row">
         <div class="avatar-wrap">
-          <img class="avatar" src="avatar.gif" alt="artemis" />
+          <img class="avatar" src="avatar.jpg" alt="artemis" />
         </div>
         <div class="info">
           <div class="name-wrap">
             <div class="name" id="nameEl">artemis</div>
             <canvas class="sparkle-canvas" id="sparkleCanvas"></canvas>
           </div>
-          <div class="handle">@curiouspuppy21966</div>
+          <div class="handle">@prettytarded</div>
         </div>
       </div>
 
@@ -799,8 +873,8 @@
     <div class="player-card">
       <!-- song title row -->
       <div class="player-title-row">
-        <span class="player-song">for my strawberry - mimichi</span>
-        <a class="spotify-link" href="https://open.spotify.com/track/6I1iznkj4IWiqwRv7KGCIg?si=5b27d5790d374514" target="_blank" rel="noopener" title="Open in Spotify">
+        <span class="player-song">permanent daylight - radiohead</span>
+        <a class="spotify-link" href="https://open.spotify.com/track/4EKxkcaHHu7uYJu6yWDnes?si=b10faa54493a416c" target="_blank" rel="noopener" title="Open in Spotify">
           <svg viewBox="0 0 24 24" fill="currentColor"><path d="M19 19H5V5h7V3H5a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2v-7h-2v7zM14 3v2h3.59l-9.83 9.83 1.41 1.41L19 6.41V10h2V3h-7z"/></svg>
         </a>
       </div>
@@ -881,7 +955,7 @@
       if (audio.duration) audio.currentTime = pct * audio.duration;
     }
 
-    setVolume(0.05);
+    setVolume(0.25);
 
     enterScreen.addEventListener('click', () => {
       enterScreen.classList.add('hidden');
@@ -942,21 +1016,17 @@
       cursorDot.style.left = mouseX + 'px';
       cursorDot.style.top  = mouseY + 'px';
 
-      // spawn a tiny sparkle trail dot
-      const trail = document.createElement('div');
-      trail.className = 'cursor-trail';
-      trail.style.left = mouseX + 'px';
-      trail.style.top  = mouseY + 'px';
-      document.body.appendChild(trail);
-      requestAnimationFrame(() => {
-        trail.style.opacity = '0.6';
-        trail.style.width   = '5px';
-        trail.style.height  = '5px';
-      });
-      setTimeout(() => {
-        trail.style.opacity = '0';
-        setTimeout(() => trail.remove(), 200);
-      }, 80);
+      // spawn star spark
+      if (Math.random() > 0.7) {
+        const spark = document.createElement('div');
+        spark.className = 'cursor-spark';
+        spark.style.left = mouseX + 'px';
+        spark.style.top  = mouseY + 'px';
+        spark.style.width = '10px';
+        spark.style.height = '10px';
+        document.body.appendChild(spark);
+        setTimeout(() => spark.remove(), 600);
+      }
     });
 
     // slow rotate the star
@@ -1207,6 +1277,17 @@
         window.open('https://www.google.com/search?q=furry+porn', '_blank');
       }
     });
+
+    // ── PARTICLES ──
+    const particlesContainer = document.getElementById('particles');
+    for (let i = 0; i < 20; i++) {
+      const p = document.createElement('div');
+      p.className = 'particle';
+      p.style.left = Math.random() * 100 + 'vw';
+      p.style.animationDelay = Math.random() * 20 + 's';
+      p.style.animationDuration = (15 + Math.random() * 10) + 's';
+      particlesContainer.appendChild(p);
+    }
   </script>
 
 
