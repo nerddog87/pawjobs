@@ -632,6 +632,11 @@
 
     * { cursor: none !important; }
 
+    @media (pointer: coarse) {
+      * { cursor: auto !important; }
+      .cursor-dot { display: none !important; }
+    }
+
     .cursor-dot {
       position: fixed;
       pointer-events: none;
@@ -1066,12 +1071,16 @@
     let mouseX = 0, mouseY = 0;
     let angle = 0;
 
+    const isTouchDevice = window.matchMedia('(pointer: coarse)').matches;
     let lastSpark = 0;
     document.addEventListener('mousemove', (e) => {
       mouseX = e.clientX;
       mouseY = e.clientY;
       cursorDot.style.left = mouseX + 'px';
       cursorDot.style.top  = mouseY + 'px';
+
+      // skip sparks on touch devices
+      if (isTouchDevice) return;
 
       // spawn sparkle trail (throttled)
       const now = Date.now();
