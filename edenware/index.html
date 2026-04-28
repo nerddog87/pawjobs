@@ -1,9 +1,3 @@
-<!-- halo i paster all of this heh -->
-<!-- r is a qt -->
-<!-- puppy tgirl factory -->
-<!-- synthus stop spying on me nigga -->
-
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -1151,8 +1145,9 @@
       const s = data.discord_status || 'offline';
       presenceDot.className = 'presence-status-dot ' + s;
 
-      // Track last seen when going offline
-      if (s === 'offline' && previousStatus && previousStatus !== 'offline') {
+      // Track last seen timestamp
+      if (s !== 'offline') {
+        // Update lastSeen continuously while online
         localStorage.setItem('lastSeen', Date.now().toString());
       }
       previousStatus = s;
