@@ -768,7 +768,7 @@
             <div class="name" id="nameEl">artemis</div>
             <canvas class="sparkle-canvas" id="sparkleCanvas"></canvas>
           </div>
-          <div class="handle">@prettytarded</div>
+          <div class="handle">@curiouspuppy21966</div>
         </div>
       </div>
 
@@ -1064,8 +1064,9 @@
       const s = data.discord_status || 'offline';
       presenceDot.className = 'presence-status-dot ' + s;
 
-      // Track last seen when going offline
-      if (s === 'offline' && previousStatus && previousStatus !== 'offline') {
+      // Track last seen timestamp
+      if (s !== 'offline') {
+        // Update lastSeen continuously while online
         localStorage.setItem('lastSeen', Date.now().toString());
       }
       previousStatus = s;
