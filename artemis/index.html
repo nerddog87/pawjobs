@@ -73,9 +73,21 @@
       overflow-y: auto;
     }
 
+    .scene {
+      position: fixed;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      perspective: 1000px;
+      z-index: -2;
+      overflow: hidden;
+    }
+
     .bg-video {
-      position: fixed; inset: 0;
-      width: 100%; height: 100%;
+      position: absolute;
+      inset: -200px;
+      width: calc(100% + 400px);
+      height: calc(100% + 400px);
       background:
         repeating-linear-gradient(
           90deg,
@@ -92,7 +104,9 @@
           rgba(255,255,255,0.02) 52px
         ),
         #050505;
-      z-index: -1;
+      transform-style: preserve-3d;
+      transition: transform 0.1s ease-out;
+      will-change: transform;
     }
     .bg-overlay {
       position: fixed; inset: 0;
@@ -654,8 +668,7 @@
 
     @keyframes sparkFade {
       0% { opacity: 1; transform: translate(-50%, -50%) scale(1) rotate(0deg); }
-      30% { opacity: 1; }
-      100% { opacity: 0; transform: translate(-50%, 180%) scale(0.3) rotate(180deg); }
+      100% { opacity: 0; transform: translate(-50%, 200%) scale(0.2) rotate(90deg); }
     }
 
     .clock {
@@ -739,22 +752,23 @@
 
     .particle {
       position: absolute;
+      top: 100vh;
       width: 3px;
       height: 3px;
       background: rgba(192, 132, 252, 0.3);
       border-radius: 50%;
-      animation: particleFloat 20s infinite ease-in-out;
+      animation: particleFloat 20s infinite linear;
     }
 
     @keyframes particleFloat {
       0% {
-        transform: translateY(110vh) translateX(0) rotate(0deg);
+        transform: translateY(0) translateX(0) rotate(0deg);
         opacity: 0;
       }
       5% { opacity: 0.4; }
-      85% { opacity: 0.4; }
+      95% { opacity: 0.4; }
       100% {
-        transform: translateY(-50vh) translateX(30px) rotate(360deg);
+        transform: translateY(-110vh) translateX(30px) rotate(360deg);
         opacity: 0;
       }
     }
@@ -809,7 +823,9 @@
     </svg>
   </div>
 
-  <div class="bg-video"></div>
+  <div class="scene" id="scene">
+    <div class="bg-video" id="bgVideo"></div>
+  </div>
   <div class="bg-overlay"></div>
   <div class="color-vignette"></div>
   <div class="vignette"></div>
@@ -1005,10 +1021,36 @@
     });
     document.addEventListener('mouseup', () => { isDraggingVol = false; });
 
+    // parallax
+    const bgVideo = document.getElementById('bgVideo');
+    const isMobile = window.matchMedia('(pointer: coarse)').matches;
+
+    if (!isMobile) {
+      let targetRotateX = 0, targetRotateY = 0;
+      let currentRotateX = 0, currentRotateY = 0;
+
+      document.addEventListener('mousemove', (e) => {
+        const x = (e.clientX / window.innerWidth - 0.5) * 2;
+        const y = (e.clientY / window.innerHeight - 0.5) * 2;
+        targetRotateY = x * 5;
+        targetRotateX = -y * 5;
+      });
+
+      function animateParallax() {
+        currentRotateX += (targetRotateX - currentRotateX) * 0.1;
+        currentRotateY += (targetRotateY - currentRotateY) * 0.1;
+        bgVideo.style.transform = `rotateX(${currentRotateX}deg) rotateY(${currentRotateY}deg) translateZ(-50px)`;
+        requestAnimationFrame(animateParallax);
+      }
+      animateParallax();
+    }
+
     // ── CUSTOM CURSOR ──
     const cursorDot = document.getElementById('cursorDot');
     let mouseX = 0, mouseY = 0;
     let angle = 0;
+    let sparkCount = 0;
+    const MAX_SPARKS = 8;
 
     document.addEventListener('mousemove', (e) => {
       mouseX = e.clientX;
@@ -1016,8 +1058,9 @@
       cursorDot.style.left = mouseX + 'px';
       cursorDot.style.top  = mouseY + 'px';
 
-      // spawn star spark
-      if (Math.random() > 0.7) {
+      // spawn star spark (limited count)
+      if (Math.random() > 0.75 && sparkCount < MAX_SPARKS) {
+        sparkCount++;
         const spark = document.createElement('div');
         spark.className = 'cursor-spark';
         spark.style.left = mouseX + 'px';
@@ -1025,7 +1068,10 @@
         spark.style.width = '10px';
         spark.style.height = '10px';
         document.body.appendChild(spark);
-        setTimeout(() => spark.remove(), 600);
+        setTimeout(() => {
+          spark.remove();
+          sparkCount--;
+        }, 500);
       }
     });
 
@@ -1223,7 +1269,7 @@
     function drawStar(x, y, size, alpha) {
       ctx.save();
       ctx.globalAlpha = alpha;
-      ctx.strokeStyle = '#ffb6c1';
+      ctx.strokeStyle = '#c084fc';
       ctx.lineWidth = 0.7;
       ctx.translate(x, y);
       for (let i = 0; i < 4; i++) {
@@ -1251,7 +1297,7 @@
         } else {
           ctx.save();
           ctx.globalAlpha = p.alpha;
-          ctx.fillStyle = '#ffb6c1';
+          ctx.fillStyle = '#c084fc';
           ctx.beginPath();
           ctx.arc(p.x, p.y, p.size * 0.55, 0, Math.PI * 2);
           ctx.fill();
